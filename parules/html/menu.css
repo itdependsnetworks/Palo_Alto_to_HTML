@@ -1,0 +1,132 @@
+/*
+Taken from http://www.sanwebe.com/2013/06/multi-level-dropdown-menu-css
+*/
+
+
+#nav{
+    height: 39px;
+    font: 12px Geneva, Arial, Helvetica, sans-serif;
+    background: #316989;
+    border: 1px solid #316989;  
+    border-radius: 3px;
+    min-width:500px;
+    margin-left: 18px;
+    padding-left: 18px;
+    margin-right: 18px;
+    padding-right: 18px;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}   
+
+#nav li{
+    list-style: none;
+    display: block;
+    float: left;
+    height: 40px;
+    position: relative;
+    border-right: 1px solid #316989;
+}
+
+#nav li a{
+    padding: 0px 10px 0px 30px;
+    margin: 0px 0;
+    line-height: 40px;
+    text-decoration: none;
+    border-right: 1px solid #316989;
+    height: 40px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #66696B;
+}
+
+#nav ul{
+    background: #f2f5f6; 
+    padding: 0px;
+    border-bottom: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
+    border-left:1px solid #DDDDDD;
+    border-radius: 0px 0px 3px 3px;
+    box-shadow: 2px 2px 3px #ECECEC;
+    -webkit-box-shadow: 2px 2px 3px #ECECEC;
+    -moz-box-shadow:2px 2px 3px #ECECEC;
+    width:240px;
+}
+#nav .site-name,#nav .site-name:hover{
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #66696B;
+    font: italic 20px/38px Georgia, "Times New Roman", Times, serif;
+    width: 160px;
+    border-right: 1px solid #316989;
+}
+#nav .site-name a{
+    width: 129px;
+    overflow:hidden;
+}
+/* 
+
+*/
+p
+#nav li.top{
+    background: no-repeat 9px 12px;
+}
+#nav li.top:hover  {
+    background:  no-repeat 9px 12px #6F96AC;
+}
+
+#nav li:hover{
+    background: #316989;
+}
+#nav li a{
+    display: block;
+}
+#nav ul li {
+    border-right:none;
+    border-bottom:1px solid #DDDDDD;
+    width:240px;
+    height:39px;
+}
+#nav ul li a {
+    border-right: none;
+    color:#6791AD;
+    text-shadow: 1px 1px 1px #FFF;
+    border-bottom:1px solid #FFFFFF;
+}
+#nav ul li:hover{background:#DFEEF0;}
+#nav ul li:last-child { border-bottom: none;}
+#nav ul li:last-child a{ border-bottom: none;}
+/* Sub menus */
+#nav ul{
+    display: none;
+    visibility:hidden;
+    position: absolute;
+    top: 40px;
+}
+
+/* Third-level menus */
+#nav ul ul{
+    top: 0px;
+    left:240px;
+    display: none;
+    visibility:hidden;
+    border: 1px solid #DDDDDD;
+}
+/* Fourth-level menus */
+#nav ul ul ul{
+    top: 0px;
+    left:240px;
+    display: none;
+    visibility:hidden;
+    border: 1px solid #DDDDDD;
+}
+
+#nav ul li{
+    display: block;
+    visibility:visible;
+}
+#nav li:hover > ul{
+    display: block;
+    visibility:visible;
+}

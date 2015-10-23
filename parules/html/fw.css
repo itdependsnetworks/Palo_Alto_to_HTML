@@ -1,0 +1,481 @@
+<style>
+       BODY
+     {
+       margin: 0;
+       padding: 0;
+     }
+
+     BODY, P, DIV, TD, TH, TR, FORM, OL, UL, LI, INPUT, TEXTAREA, SELECT, A
+
+
+     {
+/*position: absolute;
+left: -1000px;
+top: -1000px;*/
+font-size: 10px;
+font-style: normal;
+font-weight: normal;
+font-family: Tahoma, Arial, Helvetica, sans-serif;
+line-height: normal;
+text-transform: none;
+letter-spacing: normal;
+width: auto;
+/*       font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+       font-size: 9px;*/
+         }
+
+     A:hover  {
+       color: #3366CC;
+           text-decoration: none;
+     }
+
+     A  {
+       color: #3366CC;
+           text-decoration: underline;
+     }
+
+     .code
+     {
+           font-family: Courier, "Courier New", Monospaced, Serif;
+     }
+        table
+        {
+		margin-left: 15px;
+	        width:98%;
+	        border-collapse:collapse;
+        }
+        table
+        {
+	       /* border:1px solid black;*/
+        }
+        th
+        {
+	        border:1px solid black;
+		font-weight:bold;
+    		background-color: #CAD7A2
+        }
+	td
+	{
+		text-align: left;
+		border-left:1px solid black;
+		border-right:1px solid black;
+	}
+
+table.rules{
+        width:98%;
+	margin-left: 15px;
+        border-collapse:collapse;
+}
+tr.header {
+    background-color: #CAD7A2
+    border:1px solid black;
+}
+tr.header2 {
+    background-color: #CAD7A2
+    border:1px solid black;
+    text-align: left
+
+}
+tr.Row {
+	/* used for setting the background of every other row */
+	/*background-color: #EDF1F4;*/
+	background-color: #EDEDED;
+        border-left: none;
+        border-bottom: none;
+	border-top-color:#fff;
+        border-right: none;
+
+/*	border-color:#ddd;
+        border-top: none;
+	border-right-color:#AACCF6;
+        border-right: 2px ;
+/*        border-left: 1px ;
+/*        border-right: 1px;*/
+
+}
+tr.RowTop {
+        /* used for setting the background of every other row */
+	background-color: #EDEDED;
+        border-left: none;
+        border-top: none;
+        border-bottom: none;
+        border-right: none;
+}
+tr.RowTop1 {
+        /* used for setting the background of every other row */
+	background-color: #EDEDED;
+        border-left: none;
+        border-top: none;
+        border-bottom: none;
+        border-right: none;
+	border-top: 3px  solid #99CC66;
+}
+tr.RowBottom {
+        /* used for setting the background of every other row */
+        background-color: #EDEDED;
+        border-left: none;
+        border-top: none;
+        border-bottom: none;
+        border-right: none;
+
+/*	background-color: #FFF;
+	border-right-color:#AACCF6;
+        border-right: 2px ;
+	border-color:#ddd;
+        border-bottom: 1px ;
+        border-left: 1px ;
+        border-right: 1px ;
+        border-top: 0px solid black;*/
+}
+tr.RowNone {
+        /* used for setting the background of every other row */
+        background-color: #EDEDED;
+        border-bottom: none;
+        border-left: none;
+        border-top: none;
+        border-right: none;
+/*        border-bottom: none;
+	border-right-color:#AACCF6;
+        border-right: 2px ;
+	background-color: #FFF;
+	border-color:#ddd;
+        border:1px ;*/
+}
+tr.AlternateRow {
+        /* used for setting the background of every other row */
+        background-color: #FAFAFA;
+	border: none;
+}
+tr.AlternateRowTop {
+        /* used for setting the background of every other row */
+        background-color: #FAFAFA;
+	border: none;
+}
+tr.AlternateRowTop1 {
+        /* used for setting the background of every other row */
+        background-color: #FAFAFA;
+	border: none;
+	border-top: 3px  solid #99CC66;
+}
+tr.AlternateRowBottom {
+        /* used for setting the background of every other row */
+        background-color: #FAFAFA;
+
+}
+tr.AlternateRowNone {
+        /* used for setting the background of every other row */
+        background-color: #FAFAFA;
+	border: none;
+}
+
+/*
+tr.AlternateRow {
+	/* used for setting the background of every other row 
+	/* background-color: #F4F6F5; 
+	background-color: #FAFAFA;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+}
+tr.AlternateRowTop {
+	/* used for setting the background of every other row 
+	background-color: #FAFAFA;
+        border-top:2px solid black;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+}
+tr.AlternateRowBottom {
+	/* used for setting the background of every other row 
+	background-color: #FAFAFA;
+        border-bottom:2px solid black;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+}
+tr.AlternateRowNone {
+        /* used for setting the background of every other row 
+	background-color: #FAFAFA;
+        border:2px solid black;
+}
+
+        */
+
+tr.unused { /* used for setting the background of every other row */
+	background-image: url(/images/unused-rule-bg.gif);
+	background-repeat: repeat;
+}
+
+tr.unusedPanorama {
+	background-image: url(/images/unused-rule-bg.gif);
+	background-repeat: repeat;
+}
+
+
+tr.panoramaPushedRow {
+        /* used for setting the background of every other row */
+/*        background-color: #EAF0E6;*/
+	background-color: rgb(244, 248, 236);
+
+/*	background-color: #F9FBFC;;*/
+}
+tr.panoramaPushedRowTop {
+        /* used for setting the background of every other row */
+	background-color: rgb(244, 248, 236);
+}
+tr.panoramaPushedRowTop1 {
+        /* used for setting the background of every other row */
+	background-color: rgb(244, 248, 236);
+	border-top: 3px  solid #99CC66;
+}
+tr.panoramaPushedRowBottom {
+        /* used for setting the background of every other row */
+	background-color: rgb(244, 248, 236);
+}
+tr.panoramaPushedRowNone {
+        /* used for setting the background of every other row */
+	background-color: rgb(244, 248, 236);
+}
+tr.panoramaPushedRowNone1 {
+        /* used for setting the background of every other row */
+	background-color: rgb(244, 248, 236);
+	border-top: 3px  solid #99CC66;
+}
+tr.panoramaPushedAlternateRow {
+        /* used for setting the background of every other row */
+	background-color: rgb(235, 240, 228);
+}
+tr.panoramaPushedAlternateRowTop {
+        /* used for setting the background of every other row */
+	background-color: rgb(235, 240, 228);
+}
+tr.panoramaPushedAlternateRowTop1 {
+        /* used for setting the background of every other row */
+	background-color: rgb(235, 240, 228);
+	border-top: 3px  solid #99CC66;
+}
+tr.panoramaPushedAlternateRowBottom {
+        /* used for setting the background of every other row */
+	background-color: rgb(235, 240, 228);
+}
+tr.panoramaPushedAlternateRowNone {
+        /* used for setting the background of every other row */
+	background-color: rgb(235, 240, 228);
+}
+tr.panoramaPushedAlternateRowNone1 {
+        /* used for setting the background of every other row */
+	background-color: rgb(235, 240, 228);
+	border-top: 3px  solid #99CC66;
+}
+tr.RowDisabled {
+	/* used for setting the background of every other row */
+	background-color: #EDF1F4;
+	color: #CCCCCC;
+}
+tr.RowTopDisabled {
+        /* used for setting the background of every other row */
+        background-color: #EDF1F4;
+	color: #CCCCCC;
+}
+tr.RowBottomDisabled {
+        /* used for setting the background of every other row */
+        background-color: #EDF1F4;
+	color: #CCCCCC;
+}
+tr.RowNoneDisabled {
+        /* used for setting the background of every other row */
+        background-color: #EDF1F4;
+	color: #CCCCCC;
+}
+tr.AlternateRowDisabled {
+	/* used for setting the background of every other row */
+	background-color: #F4F6F5;
+	color: #CCCCCC;
+}
+tr.AlternateRowTopDisabled {
+	/* used for setting the background of every other row */
+	background-color: #F4F6F5;
+	color: #CCCCCC;
+}
+tr.AlternateRowBottomDisabled {
+	/* used for setting the background of every other row */
+	background-color: #F4F6F5;
+	color: #CCCCCC;
+}
+tr.AlternateRowNoneDisabled {
+        /* used for setting the background of every other row */
+        background-color: #F4F6F5;
+	color: #CCCCCC;
+}
+
+img.dsbld {
+	opacity: .20;
+	filter: alpha(opacity = 20);
+}
+
+tr:hover td.underline{
+text-decoration:underline; 
+}
+
+tr.filters { /* filter row enabled */
+	background-color: #D8E5EF; /*#E8F5FD;*/
+}
+
+td.captionTop {
+	/* Used for captions located at the top of the page. ??? */
+	vertical-align: top;
+	padding: 6px 0px 0px 6px;
+}
+
+td.td1 {
+        border-right-color:#ddd;
+	border-left: none;
+}
+td.underline {
+        text-decoration: underline;
+        border-right-color:#ddd;
+	border-left: none;
+}
+td.strike {
+	text-decoration: line-through;
+        border-right-color:#ddd;
+	border-left: none;
+}
+td.bolder {
+	font-weight: bold;
+        border-right-color:#ddd;
+	border-left: none;
+}
+td.italics {
+	font-style: italic;
+        border-right-color:#ddd;
+	border-left: none;
+}
+td.bolderstrike {
+	text-decoration: line-through;
+	font-weight: bold;
+        border-right-color:#ddd;
+	border-left: none;
+}
+td.italicsstrike {
+	text-decoration: line-through;
+	font-style: italic;
+        border-right-color:#ddd;
+	border-left: none;
+}
+td.element {
+	/* Used to provide vertical spacing of stacked form elements */
+	height: 25px;
+        border-right-color:#ddd;
+}
+td.change {
+	background-color: #D5D9DC;
+        border-right-color:#ddd;
+	border-left: none;
+}
+
+td.changeunderline {
+	background-color: #D5D9DC;
+        text-decoration: underline;
+        border-right-color:#ddd;
+	border-left: none;
+}
+
+td.changestrike {
+        text-decoration: line-through;
+	background-color: #D5D9DC;
+        border-right-color:#ddd;
+}
+td.changebolder {
+	background-color: #D5D9DC;
+	font-weight: bold;
+        border-right-color:#ddd;
+	border-left: none;
+}
+
+td.changeitalics {
+	background-color: #D5D9DC;
+	font-weight: italic;
+        border-right-color:#ddd;
+	border-left: none;
+}
+td.changebolderstrike {
+        text-decoration: line-through;
+	background-color: #D5D9DC;
+	font-weight: bold;
+        border-right-color:#ddd;
+	border-left: none;
+}
+
+td.changeitalicsstrike {
+        text-decoration: line-through;
+	background-color: #D5D9DC;
+	font-weight: italic;
+        border-right-color:#ddd;
+	border-left: none;
+}
+
+
+td.form { /* Used to create a margin around form elements */
+	padding: 10px 10px 11px 10px;
+	border-bottom: 1px solid #999999;
+        border-right-color:#ddd;
+}
+
+td.labelTop {
+	/* Used in dialogs to label tall elements like text areas */
+	vertical-align: top;
+	padding: 6px 0px 0px 0px;
+        border-right-color:#ddd;
+}
+
+td.labelTop2 { /* Used for labelling form elements in a popup */
+	padding: 4px 0px 3px 2px;
+	font-weight: bold;
+	/* Modified for ExtJS framework
+	color: #0052A4;
+	*/
+	color: #5A6E7A;
+}
+
+/*********** disabled object styles *************/
+a.dsbld {
+	color: #CCCCCC;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+a.dsbld:link {
+	color: #CCCCCC;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+a.dsbld:visited {
+	color: #CCCCCC;
+	text-decoration: none
+}
+
+a.dsbld:hover {
+	color: #CCCCCC;
+	text-decoration: none
+}
+
+a.dsbld:active {
+	color: #CCCCCC;
+	text-decoration: none
+}
+
+th.dsbld {
+	color: #CCCCCC;
+}
+
+td.dsbld {
+	color: #CCCCCC;
+}
+
+img.dsbld {
+	opacity: .20;
+	filter: alpha(opacity = 20);
+}
+
+
+
+</style>

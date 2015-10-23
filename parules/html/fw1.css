@@ -1,0 +1,337 @@
+       BODY
+     {
+       margin: 0;
+       padding: 0;
+     }
+
+     BODY, P, DIV, TD, TH, TR, FORM, OL, UL, LI, INPUT, TEXTAREA, SELECT, A
+
+
+     {
+/*position: absolute;
+left: -1000px;
+top: -1000px;*/
+font-size: 10px;
+font-style: normal;
+font-weight: normal;
+font-family: Tahoma, Arial, Helvetica, sans-serif;
+line-height: normal;
+text-transform: none;
+letter-spacing: normal;
+width: auto;
+/*       font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+       font-size: 9px;*/
+         }
+
+     A:hover  {
+       color: #3366CC;
+           text-decoration: none;
+     }
+
+     A  {
+       color: #3366CC;
+           text-decoration: underline;
+     }
+
+     .code
+     {
+           font-family: Courier, "Courier New", Monospaced, Serif;
+     }
+        table
+        {
+	margin-left: 15px;
+        width:98%;
+        border-collapse:collapse;
+        }
+        table
+        {
+        border:1px solid black;
+        }
+        th
+        {
+        border:1px solid black;
+	font-weight:bold;
+    background-color: #CAD7A2
+        }
+	td
+	{
+		text-align: left;
+		border-left:1px solid black;
+		border-right:1px solid black;
+	}
+
+table.rules{
+        width:98%;
+	margin-left: 15px;
+        border-collapse:collapse;
+}
+tr.header {
+    background-color: #CAD7A2
+    border:1px solid black;
+}
+tr.header2 {
+    background-color: #CAD7A2
+    border:1px solid black;
+    text-align: left
+
+}
+tr.Row {
+	/* used for setting the background of every other row */
+	background-color: #EDF1F4;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+}
+tr.RowTop {
+        /* used for setting the background of every other row */
+        background-color: #EDF1F4;
+        border-top: 2px solid black;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+}
+tr.RowBottom {
+        /* used for setting the background of every other row */
+        background-color: #EDF1F4;
+        border-bottom: 2px solid black;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+}
+tr.RowNone {
+        /* used for setting the background of every other row */
+        background-color: #EDF1F4;
+        border:2px solid black;
+}
+tr.AlternateRow {
+	/* used for setting the background of every other row */
+	background-color: #F4F6F5;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+}
+tr.AlternateRowTop {
+	/* used for setting the background of every other row */
+	background-color: #F4F6F5;
+        border-top:2px solid black;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+}
+tr.AlternateRowBottom {
+	/* used for setting the background of every other row */
+	background-color: #F4F6F5;
+        border-bottom:2px solid black;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+}
+tr.AlternateRowNone {
+        /* used for setting the background of every other row */
+        background-color: #F4F6F5;
+        border:2px solid black;
+}
+
+tr.unused { /* used for setting the background of every other row */
+	background-image: url(/images/unused-rule-bg.gif);
+	background-repeat: repeat;
+}
+
+tr.unusedPanorama {
+	background-image: url(/images/unused-rule-bg.gif);
+	background-repeat: repeat;
+}
+
+
+tr.panoramaPushedRow {
+        /* used for setting the background of every other row */
+        background-color: #EAF0E6;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+}
+tr.panoramaPushedRowTop {
+        /* used for setting the background of every other row */
+        background-color: #EAF0E6;
+        border-top:1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+}
+tr.panoramaPushedRowBottom {
+        /* used for setting the background of every other row */
+        background-color: #EAF0E6;
+        border-bottom:1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+}
+tr.panoramaPushedRowNone {
+        /* used for setting the background of every other row */
+        background-color: #EAF0E6;
+        border:1px solid black;
+}
+tr.panoramaPushedAlternateRow {
+        /* used for setting the background of every other row */
+        background-color: #F4F7EE;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+}
+tr.panoramaPushedAlternateRowTop {
+        /* used for setting the background of every other row */
+        background-color: #F4F7EE;
+        border-top:1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+}
+tr.panoramaPushedAlternateRowBottom {
+        /* used for setting the background of every other row */
+        background-color: #F4F7EE;
+        border-bottom:1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+}
+tr.panoramaPushedAlternateRowNone {
+        /* used for setting the background of every other row */
+        background-color: #F4F7EE;
+        border:1px solid black;
+}
+tr.RowDisabled {
+	/* used for setting the background of every other row */
+	background-color: #EDF1F4;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+	color: #CCCCCC;
+}
+tr.RowTopDisabled {
+        /* used for setting the background of every other row */
+        background-color: #EDF1F4;
+        border-top: 2px solid black;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+	color: #CCCCCC;
+}
+tr.RowBottomDisabled {
+        /* used for setting the background of every other row */
+        background-color: #EDF1F4;
+        border-bottom: 2px solid black;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+	color: #CCCCCC;
+}
+tr.RowNoneDisabled {
+        /* used for setting the background of every other row */
+        background-color: #EDF1F4;
+        border:2px solid black;
+	color: #CCCCCC;
+}
+tr.AlternateRowDisabled {
+	/* used for setting the background of every other row */
+	background-color: #F4F6F5;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+	color: #CCCCCC;
+}
+tr.AlternateRowTopDisabled {
+	/* used for setting the background of every other row */
+	background-color: #F4F6F5;
+        border-top:2px solid black;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+	color: #CCCCCC;
+}
+tr.AlternateRowBottomDisabled {
+	/* used for setting the background of every other row */
+	background-color: #F4F6F5;
+        border-bottom:2px solid black;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+	color: #CCCCCC;
+}
+tr.AlternateRowNoneDisabled {
+        /* used for setting the background of every other row */
+        background-color: #F4F6F5;
+        border:2px solid black;
+	color: #CCCCCC;
+}
+
+img.dsbld {
+	opacity: .20;
+	filter: alpha(opacity = 20);
+}
+
+tr:hover td.underline{
+text-decoration:underline; 
+}
+
+tr.filters { /* filter row enabled */
+	background-color: #D8E5EF; /*#E8F5FD;*/
+}
+
+td.captionTop {
+	/* Used for captions located at the top of the page. ??? */
+	vertical-align: top;
+	padding: 6px 0px 0px 6px;
+}
+
+td.strike {
+	text-decoration: line-through;
+}
+td.element {
+	/* Used to provide vertical spacing of stacked form elements */
+	height: 25px;
+}
+
+td.form { /* Used to create a margin around form elements */
+	padding: 10px 10px 11px 10px;
+	border-bottom: 1px solid #999999;
+}
+
+td.labelTop {
+	/* Used in dialogs to label tall elements like text areas */
+	vertical-align: top;
+	padding: 6px 0px 0px 0px;
+}
+
+td.labelTop2 { /* Used for labelling form elements in a popup */
+	padding: 4px 0px 3px 2px;
+	font-weight: bold;
+	/* Modified for ExtJS framework
+	color: #0052A4;
+	*/
+	color: #5A6E7A;
+}
+
+/*********** disabled object styles *************/
+a.dsbld {
+	color: #CCCCCC;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+a.dsbld:link {
+	color: #CCCCCC;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+a.dsbld:visited {
+	color: #CCCCCC;
+	text-decoration: none
+}
+
+a.dsbld:hover {
+	color: #CCCCCC;
+	text-decoration: none
+}
+
+a.dsbld:active {
+	color: #CCCCCC;
+	text-decoration: none
+}
+
+th.dsbld {
+	color: #CCCCCC;
+}
+
+td.dsbld {
+	color: #CCCCCC;
+}
+
+img.dsbld {
+	opacity: .20;
+	filter: alpha(opacity = 20);
+}
+
+

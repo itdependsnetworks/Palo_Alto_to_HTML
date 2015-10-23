@@ -1,0 +1,2 @@
+scriptroot,/scripts/pascripts
+webroot,/var/www/html/parules
