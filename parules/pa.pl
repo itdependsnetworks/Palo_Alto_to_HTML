@@ -133,6 +133,7 @@ $col_history = 1 if $history;
 		$history = $ARGV[1];
 		$xls = $ARGV[2];
 		$fwname = $ARGV[3];
+		$rule_tracker = $ARGV[4];
 	}
 
 
@@ -297,7 +298,7 @@ my $col_num = $col_history + $col_description + $col_name + $col_tag + $col_from
 my $src_col_span = $col_from + $col_source + $col_sourceip + $col_sourceuser;
 my $dst_col_span = $col_to + $col_dst + $col_dstip;
 
-my $xml = new XML::Simple(ForceArray => [vsys , rule ,  prerule , postrule]);
+my $xml = new XML::Simple(ForceArray => [vsys , rule ,  prerule , postrule, count]);
 my ($inbound_rules,$timestamp) = ();
 
 if (!$fwname){
@@ -322,6 +323,9 @@ if ($rule_tracker){
 	if ($fw eq $config_hash{'special_case1_fw'} && ($vsys eq $config_hash{'special_case1_vsys1'} || $vsys eq $config_hash{'special_case1_vsys2'})){
 		$special_case1 = 1;
 		$select_query = 'select bgroup,bapp,breason,rule_numbers,internet,global,management,db,files from rule_tracker';
+	}
+	if ($globalhist){
+		$select_query = "select bgroup,bapp,breason,rule_numbers from rule_tracker";
 	}
 #	print "$config_hash{'special_case1_fw'} -- $config_hash{'special_case1_vsys1'} $config_hash{'special_case1_vsys2'} ;$fw * $vsys- $special_case1 ^$select_query";
 
@@ -528,7 +532,8 @@ push @menu_header, '<li class=top><a href=' . "\"?fw=$fw&vsys=$vsys&history=1\">
 push @menu_header, '<li class=top><a href=' . "\"?globalhist=1\">" . 'Global History</a></li>' . "\n";
 push @menu_header, '<li class=top><a href=' . "\"?fw=$fw&vsys=$vsys&search=1&rule_tracker=$rule_tracker\">" . 'Search</a></li>' . "\n";
 push @menu_header, '<li class=top><a href=' . "\"./runnow.pl?fw=$fw\">" . 'Update</a></li>' . "\n" if $fw;
-push @menu_header, '<li class=top><a href=' . "\"?fw=$fw&vsys=$vsys&rule_tracker=1\">" . 'Rule Tracker</a></li>' . "\n" ;
+push @menu_header, '<li class=top><a href=' . "\"?fw=$fw&vsys=$vsys&rule_tracker=1\">" . 'Rule Tracker</a></li>' . "\n" if !$globalhist ;
+push @menu_header, '<li class=top><a href=' . "\"?globalhist=1&history=1&fwname=$fwname&rule_tracker=1\">" . 'Rule Tracker</a></li>' . "\n" if $globalhist ;
 push @menu_header, '<li class=top><a href=' . "\"./mate/rule_tracker.php?fw=$rule_tracker_search\">" . 'Rule Tracker Database</a></li>'. "\n" if $rule_tracker;
 push @menu_header, '
  </li>
@@ -577,9 +582,17 @@ if ($history){
 #	foreach my $rule_type (@rules_array){ 
 		my @rulenum =();
 			foreach $key (keys( % {$xml_ok{'vsys'}{$vsys}{'count'}} ) ) {
+				if ($key eq 'entry'){ $key = 'R1';}
+				if ($key ne 'name'){
+				
 				$key =~ s/R//g;
 				push @rulenum, $key;
+			#	print "$key Ken";
+				}
 			}
+#			if (!@rulenum){
+#				$out_history_hash{'vsys'}{$vsys}{'count'}{$historycount}{'entry'}{$name}{'entry'}{'to'}
+#			}
 			my @rulenum1 = sort { $a <=> $b } @rulenum;
 		my $count = ();
 		foreach my $rulenum (@rulenum1){

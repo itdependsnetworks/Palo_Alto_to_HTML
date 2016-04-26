@@ -68,6 +68,7 @@ open(FILE, "$scriptroot/fw.txt") or die("Unable to open file");
 	@all_fw = <FILE>;
 close FILE;
 
+my @check_info = ();
 my %xml_old =();
 my $check_history=();
 my %del_check =();
@@ -229,6 +230,10 @@ my $config_predefined_service_get = &xpath_send($authkey,'/config/predefined/ser
 my $config_predefined_service_ref = $xml->XMLin($config_predefined_service_get);
 my %config_predefined_service = % $config_predefined_service_ref;
 
+my $config_predefined_rule_get = &xpath_send($authkey,'/config/predefined/default-security-rules',$actionget);
+my $config_predefined_rule_ref = $xml->XMLin($config_predefined_rule_get);
+my %config_predefined_rule = % $config_predefined_rule_ref;
+#print Dumper %config_predefined_rule;
 
 my $predefined_service_ref = $config_predefined_service{'result'}{'service'};
 #my $shared_service_ref = $config_shared{'result'}{'shared'}{'service'}{'entry'};
@@ -349,6 +354,7 @@ foreach my $vsys (@vsys){
 
 	%rulebase = % $rulebase_ref;
 	%prerulebase = % $prerulebase_ref;
+#	print Dumper %prerulebase;
 	%postrulebase = % $postrulebase_ref;
 	%displayname = % $displayname_ref;
 	foreach my $key (sort keys %displayname){
@@ -403,8 +409,8 @@ foreach my $vsys (@vsys){
 	my @rule_order = &get_rule_order($device_entry_get,'rule',$vsys);
 	my @post_rule_order = &get_rule_order($config_panorama_get,'postrule',$vsys);
 
-	&make_rules('rule',$vsys,@rule_order);
 	&make_rules('prerule',$vsys,@pre_rule_order);
+	&make_rules('rule',$vsys,@rule_order);
 	&make_rules('postrule',$vsys,@post_rule_order);
 #	print "$vsys\n@pre_rule_order\n";
 
@@ -611,6 +617,14 @@ if (!$fail){
 open FILE4, ">$scriptroot/xml/$fw-history.xml" or die $!;
         print FILE4 "$xml_out1";
 close FILE4;
+
+open FILE5, ">$scriptroot/rules/$fw.txt" or die $!;
+	foreach my $line (@check_info){
+	        print FILE5 $line . "\n";
+	}
+close FILE5;
+
+
 
 #print "clean\n";
 sub make_service_group {
@@ -1407,6 +1421,7 @@ sub make_rules {
 		$name = $rule;
 		$rulecount++;
 
+		
 		$action = $any_rules{'entry'}{$rule}{'action'};
 		$log_start = $any_rules{'entry'}{$rule}{'log-start'};
 		$log_end = $any_rules{'entry'}{$rule}{'log-end'};
@@ -1592,6 +1607,8 @@ sub make_rules {
 		$destination_address_out =~ s/,$//g;
 		$destination_address_value_out =~ s/,$//g;
 
+		push @check_info, "$vsys###$description###$name";
+#		print "$vsys - $description - $name\n";
                 $out_rule_hash{$fw}{'vsys'}{$vsys}{$ruleset}{$rulecount}{'entry'}{$name}{'tag'} = $tag;
                 $out_rule_hash{$fw}{'vsys'}{$vsys}{$ruleset}{$rulecount}{'entry'}{$name}{'from'} = $from;
                 $out_rule_hash{$fw}{'vsys'}{$vsys}{$ruleset}{$rulecount}{'entry'}{$name}{'description'} = $description;
@@ -1908,8 +1925,8 @@ print "{'vsys'}{$vsys}{'count'}{$historycount}{'entry'}{$name}{'entry'}{'tag'} =
 			else {
 					$historycountnum++;
 		                        $historycount =  "R" .$historycountnum;
-=begin
 				print "Created Rule {'vsys'}{$vsys}{'count'}{$historycount}{'entry'}{$name}{fw=$fw}{vsys=$vsys}{ruleset=$ruleset}{tag=$tag} {from=$from} {neg_src=$negate_source} {src_out=$source_address_out} {src_add_val=$source_address_value_out} {src_user=$source_user} {to=$to} {neg_dst=$negate_destination} {dst_add=$destination_address_out} {dst_add_val=$destination_address_value_out} {app=$appication} {svc=$service_out} {svc_val=$service_value_out} {action=$action} {log_start=$log_start} {log_end=$log_end} {log_set=$log_setting} {spy=$spyware} {vuln=$vulnerability} {virus=$virus} {url=$url_fitering} {group=$group} {data_filtering=$data_filtering} {file_block=$file_blocking} {disabled=$disabled} {schedule=$schedule_out} {qos=$qos} \n\n";
+=begin
 print "{'vsys'}{$vsys}{'count'}{$historycount}{'entry'}{$name}{'entry'}{'tag'} = $tag\n
 {'vsys'}{$vsys}{'count'}{$historycount}{'entry'}{$name}{'entry'}{'description'} = $description\n
 {'vsys'}{$vsys}{'count'}{$historycount}{'entry'}{$name}{'entry'}{'from'} = $from\n
@@ -1944,7 +1961,7 @@ print "{'vsys'}{$vsys}{'count'}{$historycount}{'entry'}{$name}{'entry'}{'tag'} =
 =cut
 
 
-                                        $out_history_hash{'vsys'}{$vsys}{'count'}{$historycount}{'entry'}{$name}{'entry'}{'tag'} = $tag;
+#                                        $out_history_hash{'vsys'}{$vsys}{'count'}{$historycount}{'entry'}{$name}{'entry'}{'tag'} = $tag;
                                         $out_history_hash{'vsys'}{$vsys}{'count'}{$historycount}{'entry'}{$name}{'entry'}{'description'} = $description;
                                         $out_history_hash{'vsys'}{$vsys}{'count'}{$historycount}{'entry'}{$name}{'entry'}{'from'} = $from;
                                         $out_history_hash{'vsys'}{$vsys}{'count'}{$historycount}{'entry'}{$name}{'entry'}{'negate_source'} = $negate_source;
