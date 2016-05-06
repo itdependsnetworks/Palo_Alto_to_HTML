@@ -25,9 +25,11 @@ my $fw = $ARGV[0];
 my $username = $ARGV[1];
 my $password = $ARGV[2];
 
+$ENV{PERL_LWP_SSL_VERIFY_HOSTNAME}=0;
 
 my $restapi = 'esp/restapi.esp';
-my $client = REST::Client->new();
+my $client = REST::Client->new( );
+$client->getUseragent()->ssl_opts( SSL_verify_mode => 0 );
 
 my $restcombine =  "https://$fw/$restapi?type=keygen&user=$username&password=$password";
 print "$restcombine\n\n";
@@ -38,3 +40,4 @@ my $convert_xml = $client->responseContent();
 if ($convert_xml =~ /<key>(.+)<\/key>/){
 	print "$1";
 }
+print "\n";

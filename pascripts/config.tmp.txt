@@ -27,3 +27,4 @@ email_recipient,test@example.com
 run_config,0
 run_config_devices,panorama_server_name
 run_config_key,panorama_server_key
+track_db,0

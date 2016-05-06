@@ -89,6 +89,7 @@ foreach my $line (@config){
 #open(FILE, "$scriptroot/config.txt") or die("Unable to open file");
 #@config = <FILE>;
 #close FILE;
+my $track_db = $config_hash{'track_db'};
 
 foreach my $line (@config){
         my @splitline = split(/,/,$line);
@@ -101,7 +102,7 @@ my $ls1 = `ls $scriptroot/xml/`;
 my @lsarray = split(/\n|\r/,$ls1);
 
 foreach my $line (@lsarray){
-	if ($line =~ /(.*-fw0\d)-history\.xml/){
+	if ($line =~ /(.*)-history\.xml/){
 		push @history_array, $1;
 	}
 }
@@ -142,6 +143,7 @@ push @printout, '  </vsys>'. "\n";
 push @printout, '</global>';
 
 
+if ($track_db) {
 
         my $module = "DBI";
         eval("use $module;");
@@ -174,7 +176,7 @@ push @printout, '</global>';
 			}
 		}
 	}
-
+}
 
 
 my $ls2 = `ls $scriptroot/rules/`;
@@ -270,9 +272,8 @@ if ($count){
 	        }
 	close FILE;
 
-	`$webroot/pa.pl 1 1 1 global-$date 1`;
-#	`$webroot/pa.pl 1 1 1 global-global-2016-03-22 1`;
-#	$cat =`cat $webroot/xls/global-2016-03-22.xls`;
+	`$webroot/pa.pl 1 1 1 global-$date` if !$track_db;
+	`$webroot/pa.pl 1 1 1 global-$date 1` if $track_db;
 	$cat =`cat $webroot/xls/global-$date.xls`;
 	$change = "Change";
 }

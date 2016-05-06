@@ -1,11 +1,11 @@
 .svn
-parules/xls/*.xls
-pascripts/serial/*.xml
-pascripts/globalxml/*.xml
-pascripts/xml/*.xml
+parules/xls/*
+pascripts/serial/*
+pascripts/globalxml/*
+pascripts/xml/*
 pascripts/fw.txt
 pascripts/config.txt
 pascripts/configlog/*
 pascripts/report.txt
-pascripts/rules/*.txt
+pascripts/rules/*
 parules/config.txt
