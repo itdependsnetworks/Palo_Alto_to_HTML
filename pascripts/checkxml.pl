@@ -195,7 +195,8 @@ elsif ($check == 26){
 #exit();
 my $restapi = 'esp/restapi.esp';
 my $client = REST::Client->new();
-$client->getUseragent()->ssl_opts( SSL_verify_mode => 0 );
+$client->getUseragent()->ssl_opts(verify_hostname => 0);
+$client->getUseragent()->ssl_opts(SSL_verify_mode => 'SSL_VERIFY_NONE');
 
 
 my $restcombine =  "https://$fwconnect/$restapi?$action&key=$authkey&xpath=$xpath\n";

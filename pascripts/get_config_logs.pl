@@ -8,6 +8,8 @@
  use Date::Calc qw( Add_Delta_YMD );
 
 my $client = REST::Client->new();
+$client->getUseragent()->ssl_opts(verify_hostname => 0);
+$client->getUseragent()->ssl_opts(SSL_verify_mode => 'SSL_VERIFY_NONE');
 
 
 my $xml = new XML::Simple(ForceArray => [vsys , rule ,  prerule , postrule]);

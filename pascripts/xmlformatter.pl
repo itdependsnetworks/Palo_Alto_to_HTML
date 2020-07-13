@@ -202,6 +202,8 @@ my $actionshow = 'type=config&action=show';
 
 
 my $client = REST::Client->new();
+$client->getUseragent()->ssl_opts(verify_hostname => 0);
+$client->getUseragent()->ssl_opts(SSL_verify_mode => 'SSL_VERIFY_NONE');
 my $xml = new XML::Simple;
 
 my (%out_rule_hash, %service, %address, %address_group, %application_group, %service_group, %schedule) = ();

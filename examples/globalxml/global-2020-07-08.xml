@@ -1,0 +1,68 @@
+<global>  <vsys name="vsys1">
+    <count name="R1">
+      <entry name="Apple">
+        <entry action="allow" application="any," change="Added" data_filtering="" date="2020-07-08" description="id_10030" destination_address_out="apple-range" destination_address_value_out="17.0.0.0-17.255.255.255" disabled="" file_blocking="" from="Trust" group="" log_end="" log_setting="" log_start="" negate_destination="" negate_source="" qos="" ruleset="rule" schedule="" service_out="application-default" service_value_out="application-default" source_address_out="dc_server" source_address_value_out="10.10.10.0/24" source_user="any" spyware="" to="Untrust" url_filtering="" virus="" vulnerability="" current_fw_name="ntc-fw01" current_vsys="vsys1" />
+      </entry>
+    </count>
+    <count name="R2">
+      <entry name="DenyAll">
+        <entry action="allow" action_mismatch="1" app_mismatch="" application="any," change="Old" data_filtering="" date="2020-07-08" desc_mismatch="" description="id_11000" destination_address_out="any" destination_address_value_out="any" destination_mismatch="" disabled="" file_blocking="" from="any" from_mismatch="" group="" log_end="yes" log_setting="" log_start="no" negate_destination="" negate_source="" options_mismatch="" profile_mismatch="" qos="" ruleset="rule" schedule="" service_mismatch="" service_out="any" service_value_out="any" source_address_out="any" source_address_value_out="any" source_mismatch="" source_user="any" spyware="" srcuser_mismatch="" tag="none" tag_mismatch="" to="any" to_mismatch="" url_filtering="" virus="" vulnerability="" current_fw_name="ntc-fw01" current_vsys="vsys1" />
+      </entry>
+    </count>
+    <count name="R3">
+      <entry name="DenyAll">
+        <entry action="deny" action_mismatch="1" app_mismatch="" application="any," change="New" data_filtering="" date="2020-07-08" desc_mismatch="" description="id_11000" destination_address_out="any" destination_address_value_out="any" destination_mismatch="" disabled="" file_blocking="" from="any" from_mismatch="" group="" log_end="yes" log_setting="" log_start="no" negate_destination="" negate_source="" options_mismatch="" profile_mismatch="" qos="" ruleset="rule" schedule="" service_mismatch="" service_out="any" service_value_out="any" source_address_out="any" source_address_value_out="any" source_mismatch="" source_user="any" spyware="" srcuser_mismatch="" tag="none" tag_mismatch="" to="any" to_mismatch="" url_filtering="" virus="" vulnerability="" current_fw_name="ntc-fw01" current_vsys="vsys1" />
+      </entry>
+    </count>
+    <count name="R4">
+      <entry name="SNMP Monitoring Tools">
+        <entry action="allow" action_mismatch="" app_mismatch="" application="snmp," change="Old" data_filtering="" date="2020-07-08" desc_mismatch="1" description="id_10080" destination_address_out="any" destination_address_value_out="any" destination_mismatch="" disabled="" file_blocking="" from="prod" from_mismatch="" group="" log_end="" log_setting="" log_start="" negate_destination="" negate_source="" options_mismatch="" profile_mismatch="" qos="" ruleset="rule" schedule="" service_mismatch="" service_out="application-default" service_value_out="application-default" source_address_out="snmp-net" source_address_value_out="10.1.99.0/24" source_mismatch="" source_user="any" spyware="" srcuser_mismatch="" tag="npn_inbound" tag_mismatch="" to="npn" to_mismatch="" url_filtering="" virus="" vulnerability="" current_fw_name="ntc-fw01" current_vsys="vsys1" />
+      </entry>
+    </count>
+    <count name="R5">
+      <entry name="SNMP Monitoring Tools">
+        <entry action="allow" action_mismatch="" app_mismatch="" application="snmp," change="New" data_filtering="" date="2020-07-08" desc_mismatch="1" description="id_10090" destination_address_out="any" destination_address_value_out="any" destination_mismatch="" disabled="" file_blocking="" from="prod" from_mismatch="" group="" log_end="" log_setting="" log_start="" negate_destination="" negate_source="" options_mismatch="" profile_mismatch="" qos="" ruleset="rule" schedule="" service_mismatch="" service_out="application-default" service_value_out="application-default" source_address_out="snmp-net" source_address_value_out="10.1.99.0/24" source_mismatch="" source_user="any" spyware="" srcuser_mismatch="" tag="npn_inbound" tag_mismatch="" to="npn" to_mismatch="" url_filtering="" virus="" vulnerability="" current_fw_name="ntc-fw01" current_vsys="vsys1" />
+      </entry>
+    </count>
+    <count name="R6">
+      <entry name="Github Access">
+        <entry action="allow" action_mismatch="" app_mismatch="" application="any," change="Old" data_filtering="" date="2020-07-08" desc_mismatch="" description="id_10020" destination_address_out="github" destination_address_value_out="www.github.com" destination_mismatch="1" disabled="" file_blocking="" from="Trust" from_mismatch="" group="" log_end="yes" log_setting="" log_start="no" negate_destination="" negate_source="" options_mismatch="" profile_mismatch="" qos="" ruleset="rule" schedule="" service_mismatch="" service_out="service-https" service_value_out="tcp-443" source_address_out="any" source_address_value_out="any" source_mismatch="1" source_user="any" spyware="" srcuser_mismatch="" tag="none" tag_mismatch="" to="Untrust" to_mismatch="" url_filtering="" virus="" vulnerability="" current_fw_name="ntc-fw01" current_vsys="vsys1" />
+      </entry>
+    </count>
+    <count name="R7">
+      <entry name="Github Access">
+        <entry action="allow" action_mismatch="" app_mismatch="" application="any," change="New" data_filtering="" date="2020-07-08" desc_mismatch="" description="id_10020" destination_address_out="github" destination_address_value_out="github.com" destination_mismatch="1" disabled="" file_blocking="" from="Trust" from_mismatch="" group="" log_end="yes" log_setting="" log_start="no" negate_destination="" negate_source="" options_mismatch="" profile_mismatch="" qos="" ruleset="rule" schedule="" service_mismatch="" service_out="service-https" service_value_out="tcp-443" source_address_out="dc_server" source_address_value_out="10.10.10.0/24" source_mismatch="1" source_user="any" spyware="" srcuser_mismatch="" tag="none" tag_mismatch="" to="Untrust" to_mismatch="" url_filtering="" virus="" vulnerability="" current_fw_name="ntc-fw01" current_vsys="vsys1" />
+      </entry>
+    </count>
+    <count name="R8">
+      <entry name="DNS Access">
+        <entry action="allow" application="dns," change="Removed" data_filtering="" date="2020-07-08" description="id_10010" destination_address_out="1.1.1.1,google_dns" destination_address_value_out="1.1.1.1,8.8.8.8/32" disabled="" file_blocking="" from="Trust" group="" log_end="yes" log_setting="" log_start="no" negate_destination="" negate_source="" qos="" ruleset="rule" schedule="" service_out="application-default" service_value_out="application-default" source_address_out="any" source_address_value_out="any" source_user="any" spyware="" tag="none" to="Untrust" url_filtering="" virus="" vulnerability="" current_fw_name="ntc-fw01" current_vsys="vsys1" />
+      </entry>
+    </count>
+    <count name="R9">
+      <entry name="Allow LDAP From Prod">
+        <entry action="allow" application="ldap," change="Added" data_filtering="" date="2020-07-08" description="id_10050" destination_address_out="am-dns02,am-ldap01" destination_address_value_out="10.1.100.54,10.1.100.60" disabled="" file_blocking="" from="npn" group="" log_end="" log_setting="" log_start="" negate_destination="" negate_source="" qos="" ruleset="rule" schedule="" service_out="application-default" service_value_out="application-default" source_address_out="npn" source_address_value_out="10.2.0.0/16" source_user="any" spyware="" to="prod" url_filtering="" virus="" vulnerability="" current_fw_name="ntc-fw01" current_vsys="vsys1" />
+      </entry>
+    </count>
+    <count name="R10">
+      <entry name="Allow DNS From Prod">
+        <entry action="allow" application="dns," change="Added" data_filtering="" date="2020-07-08" description="id_10040" destination_address_out="am-dns01,am-dns02" destination_address_value_out="10.1.100.53,10.1.100.54" disabled="" file_blocking="" from="npn" group="" log_end="" log_setting="" log_start="" negate_destination="" negate_source="" qos="" ruleset="rule" schedule="" service_out="application-default" service_value_out="application-default" source_address_out="npn" source_address_value_out="10.2.0.0/16" source_user="any" spyware="" to="prod" url_filtering="" virus="" vulnerability="" current_fw_name="ntc-fw01" current_vsys="vsys1" />
+      </entry>
+    </count>
+    <count name="R11">
+      <entry name="Internal to Proxies">
+        <entry action="allow" application="any," change="Added" data_filtering="" date="2020-07-08" description="id_10070" destination_address_out="am-proxies" destination_address_value_out="am-proxies" disabled="" file_blocking="" from="Trust" group="" log_end="" log_setting="" log_start="" negate_destination="" negate_source="" qos="" ruleset="rule" schedule="" service_out="service-http,service-https" service_value_out="tcp-80,8080,tcp-443" source_address_out="any" source_address_value_out="any" source_user="any" spyware="" to="dmz" url_filtering="" virus="" vulnerability="" current_fw_name="ntc-fw01" current_vsys="vsys1" />
+      </entry>
+    </count>
+    <count name="R12">
+      <entry name="Proxies to Internet">
+        <entry action="allow" application="any," change="Added" data_filtering="" date="2020-07-08" description="id_10080" destination_address_out="any" destination_address_value_out="any" disabled="" file_blocking="" from="dmz" group="" log_end="" log_setting="" log_start="" negate_destination="" negate_source="" qos="" ruleset="rule" schedule="" service_out="service-http,service-https" service_value_out="tcp-80,8080,tcp-443" source_address_out="am-proxies" source_address_value_out="am-proxies" source_user="any" spyware="" to="Untrust" url_filtering="" virus="" vulnerability="" current_fw_name="ntc-fw01" current_vsys="vsys1" />
+      </entry>
+    </count>
+    <count name="R13">
+      <entry name="SNMP Monitoring Tools">
+        <entry action="allow" application="snmp," change="Added" data_filtering="" date="2020-07-08" description="id_10080" destination_address_out="any" destination_address_value_out="any" disabled="" file_blocking="" from="prod" group="" log_end="" log_setting="" log_start="" negate_destination="" negate_source="" qos="" ruleset="rule" schedule="" service_out="application-default" service_value_out="application-default" source_address_out="snmp-net" source_address_value_out="10.1.99.0/24" source_user="any" spyware="" to="npn" url_filtering="" virus="" vulnerability="" current_fw_name="ntc-fw01" current_vsys="vsys1" />
+      </entry>
+    </count>
+  </vsys>
+</global>
