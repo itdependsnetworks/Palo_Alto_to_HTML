@@ -105,7 +105,7 @@ The ability to track rule ownership, and link to a database. This is pretty powe
 
 ![Rule Owner](./docs/img/rule-owner1.png)
 
-![Rule Owner DB](./docs/img/rule-owner1.png)
+![Rule Owner DB](./docs/img/rule-owner2.png)
 
 **Export to Excel**
 
