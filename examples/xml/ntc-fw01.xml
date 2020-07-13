@@ -1,0 +1,29 @@
+<ntc-fw01>
+  <info appver="564-3168" model="PA-VM" />
+  <vsys name="vsys1">
+    <rule name="1">
+      <entry name="Apple" action="allow" application="any," data_filtering="" description="id_10030" destination_address_out="apple-range" destination_address_value_out="17.0.0.0-17.255.255.255" disabled="" file_blocking="" from="Trust" group="" log_end="" log_setting="" log_start="" negate_destination="" negate_source="" qos="" schedule="" service_out="application-default" service_value_out="application-default" source_address_out="dc_server" source_address_value_out="10.10.10.0/24" source_user="any" spyware="" tag="none" to="Untrust" url_filtering="" virus="" vulnerability="" />
+    </rule>
+    <rule name="2">
+      <entry name="Github Access" action="allow" application="any," data_filtering="" description="id_10020" destination_address_out="github" destination_address_value_out="github.com" disabled="" file_blocking="" from="Trust" group="" log_end="yes" log_setting="" log_start="no" negate_destination="" negate_source="" qos="" schedule="" service_out="service-https" service_value_out="tcp-443" source_address_out="dc_server" source_address_value_out="10.10.10.0/24" source_user="any" spyware="" tag="none" to="Untrust" url_filtering="" virus="" vulnerability="" />
+    </rule>
+    <rule name="3">
+      <entry name="Allow LDAP From Prod" action="allow" application="ldap," data_filtering="" description="id_10050" destination_address_out="am-ldap01,am-ldap02" destination_address_value_out="10.1.100.60,10.1.100.61" disabled="" file_blocking="" from="npn" group="" log_end="" log_setting="" log_start="" negate_destination="" negate_source="" qos="" schedule="" service_out="application-default" service_value_out="application-default" source_address_out="npn" source_address_value_out="10.2.0.0/16" source_user="any" spyware="" tag="npn_base" to="prod" url_filtering="" virus="" vulnerability="" />
+    </rule>
+    <rule name="4">
+      <entry name="Allow DNS From Prod" action="allow" application="dns," data_filtering="" description="id_10040" destination_address_out="am-dns01,am-dns02" destination_address_value_out="10.1.100.53,10.1.100.54" disabled="" file_blocking="" from="npn" group="" log_end="" log_setting="" log_start="" negate_destination="" negate_source="" qos="" schedule="" service_out="application-default" service_value_out="application-default" source_address_out="npn" source_address_value_out="10.2.0.0/16" source_user="any" spyware="" tag="npn_base" to="prod" url_filtering="" virus="" vulnerability="" />
+    </rule>
+    <rule name="5">
+      <entry name="Internal to Proxies" action="allow" application="any," data_filtering="" description="id_10070" destination_address_out="am-proxies" destination_address_value_out="am-proxies" disabled="" file_blocking="" from="Trust" group="" log_end="" log_setting="" log_start="" negate_destination="" negate_source="" qos="" schedule="" service_out="service-http,service-https" service_value_out="tcp-80,8080,tcp-443" source_address_out="any" source_address_value_out="any" source_user="any" spyware="" tag="web" to="dmz" url_filtering="" virus="" vulnerability="" />
+    </rule>
+    <rule name="6">
+      <entry name="Proxies to Internet" action="allow" application="any," data_filtering="" description="id_10080" destination_address_out="any" destination_address_value_out="any" disabled="" file_blocking="" from="dmz" group="" log_end="" log_setting="" log_start="" negate_destination="" negate_source="" qos="" schedule="" service_out="service-http,service-https" service_value_out="tcp-80,8080,tcp-443" source_address_out="am-proxies" source_address_value_out="am-proxies" source_user="any" spyware="" tag="web" to="Untrust" url_filtering="" virus="" vulnerability="" />
+    </rule>
+    <rule name="7">
+      <entry name="SNMP Monitoring Tools" action="allow" application="snmp," data_filtering="" description="id_10090" destination_address_out="any" destination_address_value_out="any" disabled="" file_blocking="" from="prod" group="" log_end="" log_setting="" log_start="" negate_destination="" negate_source="" qos="" schedule="" service_out="application-default" service_value_out="application-default" source_address_out="snmp-net" source_address_value_out="10.1.99.0/24" source_user="any" spyware="" tag="npn_inbound" to="npn" url_filtering="" virus="" vulnerability="" />
+    </rule>
+    <rule name="8">
+      <entry name="DenyAll" action="deny" application="any," data_filtering="" description="id_11000" destination_address_out="any" destination_address_value_out="any" disabled="" file_blocking="" from="any" group="" log_end="yes" log_setting="" log_start="no" negate_destination="" negate_source="" qos="" schedule="" service_out="any" service_value_out="any" source_address_out="any" source_address_value_out="any" source_user="any" spyware="" tag="none" to="any" url_filtering="" virus="" vulnerability="" />
+    </rule>
+  </vsys>
+</ntc-fw01>

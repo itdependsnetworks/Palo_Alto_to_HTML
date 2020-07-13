@@ -288,39 +288,6 @@ if ($config_hash{'run_config'}){
 	`$scriptroot/get_config_logs.pl $date > $scriptroot/configlog/Config-Logs-$date.csv` if $manual_date;
 }
 
-my $data = qq{
-	$catreport,
-	$cat,
-	$emailprint
-};
-
-my $subject   = "Palo Alto Firewall Changes -- $date -- $change";
-my $sender    = $email_sender;
-my $recipient = $email_recipient;
-my $mime = MIME::Lite->new(
-    'From'    => $sender,
-    'To'      => $recipient,
-    'Subject' => $subject,
-    'Type'    => 'text/html',
-    'Data'    => $data,
-);
-
-if ($count){
-	$mime->attach(Type => 'application/vnd.ms-excel',
-	  Path => "$webroot/xls/global-$date.xls",
-	  Id => "global-$date.xls",
-	);
-
-	if ($config_hash{'run_config'}){
-		$mime->attach(Type => 'application/vnd.ms-excel',
-		  Path => "$scriptroot/configlog/Config-Logs-$date.csv",
-	 	 Id => "Config-Logs-$date.xls",
-		);
-	}
-}
-
-$mime->send() or die "Failed to send mail\n";
-
 
 sub mon2num {
         my $mon = shift;

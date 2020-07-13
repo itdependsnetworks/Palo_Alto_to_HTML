@@ -1,0 +1,8 @@
+vsys1###id_10030###Apple
+vsys1###id_10020###Github Access
+vsys1###id_10050###Allow LDAP From Prod
+vsys1###id_10040###Allow DNS From Prod
+vsys1###id_10070###Internal to Proxies
+vsys1###id_10080###Proxies to Internet
+vsys1###id_10090###SNMP Monitoring Tools
+vsys1###id_11000###DenyAll

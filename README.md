@@ -3,11 +3,6 @@ Palo_Alto_to_HTML
 
 Script using API to pull down firewall rules and represent them in a webpage. 
 
-
-###### Version 0.4
-###### Maintained by Ken Celenza, ken@celenza.org, itdependsnetworks.com
-
-
 ###### Warning, this program has not been tested and is offered as is This requires you to keep a plain text file of your authkey's, review  your own secuirty process, to evaluate if this is ok
 =================
 
@@ -15,97 +10,49 @@ Script using API to pull down firewall rules and represent them in a webpage.
 
 **Prerequisite**
 
-Define a web and script root
-
-You need a user/group that is going to be able to run these scripts and be readable 
-by apache. Since apache will read the xml fileand  has to be able to read the images
-and css files you untar'd 
-
 ```
-Install cpan modules:
-use REST::Client
-use XML::Simple
-use CGI 
-use Data::Dumper (for troubleshooting)
-use DBI (for rule tracking)
+Docker
+Docker Compose
+Make
 ```
 
-**Step 1: Move files in respective web and script roots** 
-```
-e.g.
+**Setup Configuration Files**
 
-cd /srv/www/htdocs/parules
-mv /tmp/parules /srv/www/htdocs/parules
-cd /scripts/pascripts/
-mv /tmp/pascripts /scripts/
-```
+Copy config.tmp.txt to config.txt in both folders
 
-**Step 1a: Set directory permissions**
+e.g. `cp config.tmp.txt config.txt`
 
-If you did not untrar or upload with correct owner, you can change it as such:  
-chown -R owner:user for all files, using that magic user that is described above
-e.g.
 ```
-chown -R scriptuser:apachegroup /srv/www/htdocs/parules
-chown -R scriptuser:apachegroup /scripts/pascripts
+- updated config.txt for any columns you don't want showing by default,
+  - simply change any 1 to a 0
+- Update Mysql password as needed
 ```
 
-**Step 2: Excute Permissions**
+**Build and RUN Server**
 
-Ensure the below files has proper execute permissions. 
-
-xmlformatter.pl  
-runall.pl  
-pa.pl  
-checkxml.pl  
-runnow.pl  
-dailyhistory.pl  
-
-e.g.
-``` 
-cd /scripts/pascripts/
-chmod 755 *.pl
-cd /srv/www/htdocs/parules/
-chmod 755 *.pl
+```
+make build
+make deploy
 ```
 
+This goes through all the FWs listed in fw.txt and creates xml
 
-**Step 3: Module Check**
+**Get Key**
 
-Make sure you have modules  
-run  
-sh checkmodule.sh  
+Get keys by running getkey.pl script, which is exposed via a Make command.
 
-**Step 4: Config Files**
-
-Move Config.tmp.txt to Config.txt in both folders
-
-e.g. 
-
-mv config.tmp.txt config.txt
-
-	- updated config.txt for any columns you don't want showing by default,
-		- simply change any 1 to a 0
-	- Adjust mysql if using that feature
-	- adjust the webroot and scriptroot folders
-
-**Step 5: Get Key**
-
-Get keys by running getkey.pl script
-
-./getkey.pl <device> <username> <password>  
+make getkey.pl <device> <username> <password>
 e.g.
 ```
 ./getkey.pl test-fw01.example.com admin password
 ```
 
-**Step 6: Fill out firewall file**
+**Fill out firewall file**
 
-Move fw.tmp.txt to fw.txt  
-e.g. 
+Copy fw.tmp.txt to fw.txt in pascripts directory
 
 ```
-mv fw.tmp.txt fw.txt 
+cp fw.tmp.txt fw.txt 
 ```
 
 With that information populate fw.txt, ensuring there are always
@@ -113,44 +60,9 @@ With that information populate fw.txt, ensuring there are always
 the next is the device it will connect to (think IP) if different then the
 name in the first column
 
-**Step 7: Run Script**
-Run runall.pl  
-./runall.pl  
-This goes through all the FWs listed in fw.txt and creates xml  
 
-**Step 8: CGI config**
-Configure CGI to work on your apache  
+**Rule Tracking**
 
-e.g.
-```
-<Directory /var/www/html/parules/>
-        Options +ExecCGI
-        AddHandler cgi-script .cgi .pl
-</Directory>
-```
-
-visit your website at webroot/pa.pl  
-e.g. http://example.com/parules/pa.pl  
-
-**Step 9: Set to Autorun**
-Set crontab to run automatically
-
-e.g. 
-```
-#Cronjob to run fw check for PA devices
-0 23 * * * /scripts/pascripts/runall.pl get 2>&1
-55 23 * * * /scripts/parules/dailyhistory.pl 2>&1
-```
-
-**Step 10: Rule Tracking**
-
-If you want to use the rule_tracking feature, setup sql  
-
-Upload your sql to your mysql server, using included sql file  
-e.g.
-```
-mysql -u root -p[password] [database_name] < rule_tracker.sql
-```
 
 Fill out your mysql information in the config file in the script directory.  
 
@@ -179,4 +91,51 @@ the "Rules" column matches the description column in the actual config. You can 
 multiple firewall rules applied to one entry, just seperate them with a comma. This way if 
 one request requires multiple rules, you can manage it that way. 
 
+## Features
 
+**Rule History**
+
+Track when and how rules were updated, added, or deleted, with a simplified interface that has same look and feel as normal policy management.
+
+![Rule History](./docs/img/rule-history.png)
+
+**Rule Ownership**
+
+The ability to track rule ownership, and link to a database. This is pretty powerful offering as it gives the ability to follow up with users and ensure they still "own" the rule.
+
+![Rule Owner](./docs/img/rule-owner1.png)
+
+![Rule Owner DB](./docs/img/rule-owner1.png)
+
+**Export to Excel**
+
+The ability to export the rule base, history, and ownership to a MS Excel document. This is helpful to send to auditors and security policy makers.
+
+![Rule in Excel](./docs/img/rule-to-excel.png)
+
+**Rule Object Extrapolation**
+
+Provides a view of the rules "expanded" meaning, not only can you see the object, but you can also the value. Such as knowing that "am-ldap01" is "10.1.100.60", or "service-http" is "tcp-80,8080".
+
+![Rule Object Extrapolation](./docs/img/Rule-Object-Extrapolation.png)
+
+**Quick Navigation**
+
+There is a quick navigation to switch between firewalls.
+
+![Navigation](./docs/img/navigation.png)
+
+**Zone and Tag View**
+
+The zone view allows you to see each view isolated to itself, this is especially helpful when the rule has a zone in the `any` zone. This will still show. Tag view is similar, but based on tag rather than zone.
+
+![Zone View](./docs/img/zone-view.png)
+
+![Tag View](./docs/img/tag-view.png)
+
+There is also features to search, get global history (more than one device's rule history), view a previous version of the policy, refresh the process from the GUI, and manage the columns viewable to name a few.
+
+
+## Demo
+
+To Demo, you can copy the files from the `examples` directory, and put them into the `pascripts` directory. 

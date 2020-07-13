@@ -1,0 +1,27 @@
+---
+version: '3.4'
+services:
+  rule_tracker:
+    container_name: parules_web
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: >
+      sh -c "service apache2 start && bash"
+    ports:
+      - "8085:80"
+    tty: true
+    volumes:
+      - ./pascripts:/scripts/pascripts
+      - ./parules:/var/www/html
+    depends_on:
+      - mysql
+  mysql:
+    container_name: parules_db
+    image: mysql:5.6
+    ports:
+      - "3306:3306"
+    env_file:
+      - ./.creds.env
+    volumes:
+      - ${PWD}/pascripts/rule_tracker.sql:/docker-entrypoint-initdb.d/rule_tracker.sql

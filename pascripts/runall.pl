@@ -19,8 +19,9 @@
 
 # Maintained by Ken Celenza, ken.celenza@gmail.com
 
+$ENV{PERL_LWP_SSL_VERIFY_HOSTNAME}=0;
 
- use XML::Simple;
+use XML::Simple;
 my $xml = new XML::Simple(ForceArray => [vsys , rule ,  prerule , postrule]);
 
 my $time = localtime;

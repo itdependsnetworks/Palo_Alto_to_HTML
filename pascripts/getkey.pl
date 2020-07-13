@@ -29,7 +29,8 @@ $ENV{PERL_LWP_SSL_VERIFY_HOSTNAME}=0;
 
 my $restapi = 'esp/restapi.esp';
 my $client = REST::Client->new( );
-$client->getUseragent()->ssl_opts( SSL_verify_mode => 0 );
+$client->getUseragent()->ssl_opts(verify_hostname => 0);
+$client->getUseragent()->ssl_opts(SSL_verify_mode => 'SSL_VERIFY_NONE');
 
 my $restcombine =  "https://$fw/$restapi?type=keygen&user=$username&password=$password";
 print "$restcombine\n\n";
